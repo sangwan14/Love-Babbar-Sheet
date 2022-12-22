@@ -1,3 +1,4 @@
+//Approach 1
 //Do a partial sort using Quick Select Algorithm
 class Solution{
     public:
@@ -33,3 +34,20 @@ class Solution{
     
 };
 
+//Approach 2
+//Use Min heap, build a heap from the n elements and pop k-1 elements, return the root element of the heap which is the kth smallest.
+class Solution2{
+    public:
+    // arr : given array
+    // l : starting index of the array i.e 0
+    // r : ending index of the array i.e size-1
+    // k : find kth smallest element and return using this function
+    int kthSmallest(int arr[], int l, int r, int k) {
+        //code here
+        priority_queue<int, vector<int>, greater<int>> pq(arr+l, arr+r+1);
+        for(int i=0; i<k-1; i++){
+            pq.pop();
+        }
+        return pq.top();
+    }
+};
